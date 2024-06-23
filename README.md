@@ -3,7 +3,8 @@ A random python script I made that generates 1s 0s and spaces to have a cool vis
 This can be used as a cool party trick or to get some people who don't know what hacking is to think your hacking.
 # Install
 First clone the repository:\
-`git clone https://github.com/TheDiamondOG/Hacker-Binary-Script`\\
+`git clone https://github.com/TheDiamondOG/Hacker-Binary-Script`\
+\
 Then run the script\
 `python3 binary_cool.py`
 # How to use
