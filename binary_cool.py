@@ -31,9 +31,11 @@ clear()
 calabration = len(input(f"{colors.OKCYAN}Put as many 0 as it needs to make a line across your screen\n"))
 
 # Sometimes the lines go by too fast, so we ask the user for the delay
+print("Please set a delay for the loop, I recommend either 0.01 or 0.001")
 delay = float(input("Delay: "))
 
 # This is sets the chance of getting a space instead of a one and zero
+print("Choose a number higher than 1 to get spaces or choose 1 to get no spaces.\nI recommend setting this to 5.")
 space_number = int(input("Chance of space: "))
 
 # Makes it stop showing the color cyan for text
