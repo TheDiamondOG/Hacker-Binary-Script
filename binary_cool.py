@@ -23,20 +23,58 @@ colors = bcolors()
 
 # Make something to clear the console
 def clear():
-    os.system("clear")
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
 
+# Clears the console screen
 clear()
 
 # The calabration is used to see how many ones and zeros to put on the screen
 calabration = len(input(f"{colors.OKCYAN}Put as many 0 as it needs to make a line across your screen\n"))
 
-# Sometimes the lines go by too fast, so we ask the user for the delay
-print("Please set a delay for the loop, I recommend either 0.01 or 0.001")
-delay = float(input("Delay: "))
+# Make loop to make it easy to not have to restart the script on a fail
+while True:
+    # The try is used if the user forgets what a number is
+    try:
+        # Fix color problems
+        print(colors.OKCYAN)
+        # Sometimes the lines go by too fast, so we ask the user for the delay
+        print("Please set a delay for the loop, I recommend either 0.01 or 0.001")
 
-# This is sets the chance of getting a space instead of a one and zero
-print("Choose a number higher than 1 to get spaces or choose 1 to get no spaces.\nI recommend setting this to 5.")
-space_number = int(input("Chance of space: "))
+        # Get the user input then change it into a decimal able to be used in the script
+        delay = float(input("Delay: "))
+        
+        # Then end the loop to not be stuck retyping variables
+        break
+    except Exception:
+        # Tell the user that they messed up
+        print(f"{colors.FAIL}It needs to be a number{colors.ENDC}")
+
+# Make loop to make it easy to not have to restart the script on a fail
+while True:
+    # The try is used if the user forgets what a number is
+    try:
+        # Fix color problems
+        print(colors.OKCYAN)
+        # This is sets the chance of getting a space instead of a one and zero
+        print("Choose a number higher than 1 to get spaces or choose 1 to get no spaces.\nI recommend setting this to 5.")
+
+        # Get the user input then change it into a number then add 1 so the script does not completly break
+        space_number = int(input("Chance of space: ")) +1
+        
+        # Then end the loop to not be stuck retyping variables
+        break
+
+    except Exception:
+        # Tell the user that they messed up again
+        print(f"{colors.FAIL}It needs to be a number{colors.ENDC}")
+
+# Make sure that the user does not make the script die so if the number is 0 or less than 0 set it to 1
+if space_number <= 0:
+    # The reason the number 1 was used because it will do a number between 0 - 1
+    space_number = 1
 
 # Makes it stop showing the color cyan for text
 print(colors.ENDC)
@@ -47,6 +85,7 @@ number_list = []
 # Make the screen clear at the end of the script
 atexit.register(clear)
 
+# Clear the console, man I write to many comments so most of my vs code is now green lol
 clear()
 
 # Set up an infinite loop
@@ -74,3 +113,8 @@ while True:
 
     # Then run a delay to have a bit of time between each line
     time.sleep(delay)
+
+"""
+This was not made by Chat GPT, I just put too many comments in scripts
+But hey at least it's understandable to people
+"""
