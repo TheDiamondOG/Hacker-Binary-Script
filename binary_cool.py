@@ -28,6 +28,23 @@ def clear():
     else:
         os.system("clear")
 
+# Setting up a character list
+character_list = ["~", "`", "1", "!", "2", "@", "3", "#", "4", "$", "5", "%", "6", "^", "7", "&", "8", "*", "9", "(", "0", ")", "-", "_", "=", "+", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "{", "]", "}", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", ":", "'", '"', "\\", "|", "z", "x", "c", "v", "b", "n", "m", ",", "<", ".", ">", "/", "?"]
+
+def true_false():
+    tfl = [True, False]
+    return random.choice(tfl)
+
+def random_character(random_case:bool=False):
+    character = random.choice(character_list)
+    if random_case == True:
+        rand_case = true_false()
+        if rand_case == True:
+            character = character.upper()
+        if rand_case == False:
+            character = character.lower()
+    return character
+
 # Clears the console screen
 clear()
 
@@ -71,6 +88,30 @@ while True:
         # Tell the user that they messed up again
         print(f"{colors.FAIL}It needs to be a number{colors.ENDC}")
 
+# Fix color problems
+print(colors.OKCYAN)
+
+# This is sets the random character flag
+print("Do you want to use random characters?")
+
+# Get the user input on using random characters
+random_character_choice = input("Characters (y/N): ")
+
+# Get options setting correctly
+if random_character_choice.lower() == "y":
+    random_character_choice = True
+
+    # This is sets the random character casing flag
+    print("Do you want to use random casing?")
+
+    random_case = input("Random Casing (Y/n): ")
+    if random_case.lower() == "y" or random_case.replace(" ", ""):
+        random_case = True
+    else:
+        random_case = False
+else:
+    random_character_choice = False
+
 # Make sure that the user does not make the script die so if the number is 0 or less than 0 set it to 1
 if space_number <= 0:
     # The reason the number 1 was used because it will do a number between 0 - 1
@@ -92,12 +133,24 @@ clear()
 while True:
     # A loop based on the calabration to make the line
     for i in range(calabration):
-        # The randomizer for the script
-        rand_stuff = random.randint(0, space_number)
+        # Setting up either random character or number
+        if random_character_choice == True:
+            # The randomizer for the script
+            rand_stuff = random.randint(0, space_number)
 
-        # Checks if the number is greater than zero and if it is replace it with a space
-        if rand_stuff >= 2:
-            rand_stuff = " "
+            # Checks if the number is greater than zero and if it is replace it with a space
+            if rand_stuff >= 2:
+                rand_stuff = " "
+            else:
+                rand_stuff = random_character(random_case)
+
+        else:
+            # The randomizer for the script
+            rand_stuff = random.randint(0, space_number)
+
+            # Checks if the number is greater than zero and if it is replace it with a space
+            if rand_stuff >= 2:
+                rand_stuff = " "
         
         # Add that number or space to the list
         number_list.append(str(rand_stuff))
