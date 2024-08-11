@@ -11,4 +11,6 @@ Then run the script.\
 1. Calabration: Put as many 0s as it takes to make a line across your terminal, and not longer than your terminal.
 2. Set the delay: I recommend 0.01 and 0.001 delays.
 3. Choose the random chance for a space; it needs to be greater than 1.
-4. Enjoy
+4. Choose if you want a random characters.
+   - Choose if you want random casing
+6. Enjoy
